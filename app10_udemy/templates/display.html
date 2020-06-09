@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <meta content="UTF-8">
+        
+        <title> kod! </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- Links in HTML  Here target is used to open google in new tab -->
+        
+        <!-- input boxes and forms -->
+        <div class="headers">
+        <h2>Select the file and submit to get displayed</h2>
+        
+        <h1>File content</h1>
+    <form action="/display/" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        <input id="uploadbutton" type="file" value="Browse" name="file" />
+        <input type="submit" value="Upload" />
+    
+    
+    
+    {% if row_data != "Dataframe must have Address column to be displayed" %}
+    <h3>  Contents of uploaded file is: </h3>
+    <table>
+        
+        <tr>
+            {% for col in column_names %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+            {% for list in row_data%}
+        <tr>
+            {% for col in list %}
+            <td> {{col}} </td>
+            {% endfor %}
+              
+        </tr>
+            {% endfor %}
+            
+            
+    </table>
+    
+    <a href="{% static 'original.xlsx' %}" download="file"> 
+        <button class="btn"><i class="fa fa-download"></i> Download</button>
+        </a> 
+        
+    {% else %}
+    
+    <p>{{row_data}}</p>
+    {%endif%}
+</form>
+</div>
+    </body>
+</html>

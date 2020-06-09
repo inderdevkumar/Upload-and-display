@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from browse_display.views import home, display, download
+from django.conf import settings  # for getting image
+from django.conf.urls.static import static  # for getting image
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', home),
+    path('display/', display),
+    path('download/', download),
+    
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for getting image
+

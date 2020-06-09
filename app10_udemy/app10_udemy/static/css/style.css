@@ -1,0 +1,11 @@
+body{
+    background-color: rgb(202, 228, 181);
+    text-align: center;
+}
+form {
+    
+    display: inline-block;
+}
+.headers{
+    margin-top: 150px
+}

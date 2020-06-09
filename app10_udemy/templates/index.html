@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <meta content="UTF-8">
+        
+        <title> kod!  </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <!-- Links in HTML  Here target is used to open google in new tab -->
+        
+        <!-- input boxes and forms -->
+        <div class="headers">
+        <h2>Select the file and submit to get displayed</h2>
+        
+        <h1>File content</h1>
+    <form action="/display/" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        <input id="uploadbutton" type="file" value="Browse" name="file" />
+        <input type="submit" value="Upload" />
+    </form>
+
+    </div>
+    </body>
+</html>
